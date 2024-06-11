@@ -1,0 +1,47 @@
+#nettoyage - enlever colonnes inutilisées
+
+SELECT  
+date, consommation, prevision_j1, prevision_j, fioul, charbon, gaz, nucleaire, eolien, eolien_terrestre, eolien_offshore, solaire, hydraulique, bioenergies, taux_co2
+
+
+FROM `team-elec.Consommation_elec.Conso_tps_reel` 
+
+#nettoyage - mettre des null à la place des "ND" sur deux colonnes
+
+UPDATE `team-elec.Consommation_elec.Conso_tps_reel_cleaned` 
+
+SET eolien_terrestre =
+CASE
+  WHEN eolien_terrestre = "ND"
+  THEN NULL
+  ELSE eolien_terrestre
+  END
+,
+
+eolien_offshore =
+CASE
+  WHEN eolien_offshore = "ND"
+  THEN NULL
+  ELSE eolien_offshore
+  END
+WHERE 1=1
+
+#nettoyage - mettre des null à la place des "ND" sur deux colonnes
+
+UPDATE `team-elec.Consommation_elec.Conso_tps_reel_cleaned` 
+
+SET eolien_terrestre =
+CASE
+  WHEN eolien_terrestre = "ND"
+  THEN NULL
+  ELSE eolien_terrestre
+  END
+,
+
+eolien_offshore =
+CASE
+  WHEN eolien_offshore = "ND"
+  THEN NULL
+  ELSE eolien_offshore
+  END
+WHERE 1=1
